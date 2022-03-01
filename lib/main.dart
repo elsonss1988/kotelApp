@@ -46,30 +46,27 @@ class MeuApp extends StatelessWidget {
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Expanded(
-                            child: FlatButton(
-                          onPressed: () {},
-                          child: Column(children: [
-                            Icon(Icons.call, color: Colors.blue),
-                            Text("Ligar"),
-                          ]),
-                        )),
-                        Expanded(
-                            child: FlatButton(
-                          onPressed: () {},
-                          child: Column(children: [
-                            Icon(Icons.location_on, color: Colors.blue),
-                            Text("Mapa"),
-                          ]),
-                        )),
-                        Expanded(
-                            child: FlatButton(
-                          onPressed: () {},
-                          child: Column(children: [
-                            Icon(Icons.share, color: Colors.blue),
-                            Text("Compartilhar"),
-                          ]),
-                        )),
+                        Button(
+                            onPress: callAction,
+                            icon: Icons.call,
+                            text: "Liga"),
+                        Button(
+                            onPress: mapaAction,
+                            icon: Icons.location_on,
+                            text: "Mapa"),
+                        Button(
+                          onPress: shareAction,
+                          icon: Icons.share,
+                          text: "Compartilhar",
+                        )
+                        // Expanded(
+                        //     child: FlatButton(
+                        //   onPressed: () {},
+                        //   child: Column(children: [
+                        //     Icon(Icons.share, color: Colors.blue),
+                        //     Text("Compartilhar"),
+                        //   ]),
+                        // )),
                       ])),
               Container(
                   padding: EdgeInsets.all(5),
@@ -78,5 +75,30 @@ class MeuApp extends StatelessWidget {
             ],
           )))),
     );
+  }
+
+  void callAction() {}
+
+  void mapaAction() {}
+
+  void shareAction() {}
+}
+
+class Button extends StatelessWidget {
+  Button({this.onPress, this.icon, this.text});
+
+  VoidCallback? onPress;
+  var icon;
+  var text;
+
+  Widget build(BuildContext context) {
+    return Expanded(
+        child: TextButton(
+      onPressed: onPress,
+      child: Column(children: [
+        Icon(icon, color: Colors.blue),
+        Text(text),
+      ]),
+    ));
   }
 }
